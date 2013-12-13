@@ -14,6 +14,5 @@ def teardown_request(exception):
 
 @app.route('/')
 def index():
-    cur = g.db.execute('select * from spots')
-    spots = cur.fetchall()
-    return render_template('index.html', spots=spots)
+    cur = query_db('select * from spots')
+    return render_template('index.html', spots=cur)
