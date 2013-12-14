@@ -9,6 +9,12 @@ def connect_db():
     rv.row_factory = sqlite3.Row
     return rv
 
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = connect_db()
+    return db
+
 def init_db():
     with closing(connect_db()) as db:
         with app.open_resource('schema.sql', mode='r') as f:
@@ -16,7 +22,7 @@ def init_db():
         db.commit()
 
 def query_db(query, args=(), one=False):
-    cur = connect_db().execute(query, args)
+    cur = get_db().execute(query, args)
     rv = cur.fetchall()
     cur.close()
     return (rv[0] if rv else None) if one else rv

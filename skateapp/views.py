@@ -4,7 +4,7 @@ from flask import render_template, flash, url_for
 
 @app.before_request
 def before_request():
-    g.db = connect_db()
+    g.db = get_db()
 
 @app.teardown_request
 def teardown_request(exception):
