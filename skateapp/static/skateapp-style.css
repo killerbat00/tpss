@@ -11,8 +11,8 @@ body {
     min-height: 100%;
     height: auto !important;
     height 100%;
-    margin: 0 auto -80px;
-    padding: 0 0 80px;
+    margin: 0 auto -64px;
+    padding: 0 0 64px;
 }
 
 .btn-outline {
@@ -135,8 +135,8 @@ body {
 }
 
 .tpss-footer {
-    height: 80px;
-    color: #777;
+    height: 64px;
+    color: #fff;
     text-align: center;
     background: rgba(72,52,106,.8);
     border-top: 1px solid #563d7c;
