@@ -1,6 +1,5 @@
 from skateapp import app
 from database import *
-from api import *
 from flask import render_template, flash, url_for
 
 @app.before_request

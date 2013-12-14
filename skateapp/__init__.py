@@ -11,4 +11,4 @@ elif os.environ['ENV'].lower() == 'test':
 else:
     app.config.from_object(config.Config())
 
-import views
+import api

@@ -4,6 +4,7 @@ from skateapp import config
 import unittest
 import os
 import sqlite3
+import json
 
 class SkateAppTestCase(unittest.TestCase):
     def setUp(self):
@@ -42,13 +43,6 @@ class SkateAppTestCase(unittest.TestCase):
         assert footer in rv.data
         assert name in rv.data
 
-    def test_empty_list_page(self):
-        rv = self.app.get('/list')
-        with app.app_context():
-            res = self.database.query_db('select * from spots')
-            assert res == []
-        assert 'Nothing here.' in rv.data
-
     def test_login_page(self):
         rv = self.app.get('/login')
         text = 'Login'
@@ -58,6 +52,17 @@ class SkateAppTestCase(unittest.TestCase):
         assert 'Username' in rv.data
         assert 'Password' in rv.data
         assert 'Sign in' in rv.data
+
+    def test_api_spots(self):
+        res = {}
+        fakeshit = {"id":"1","name":"spot1","latitude": "100", "longitude": "100", "photo":"test/photo"}
+        rv = self.app.get('/api/spots/')
+        for line in rv.data.split('\n')[1:len(rv.data.split('\n'))-1]:
+            key = line.split()[0].replace('"','').strip(':')
+            val = line.split()[1].replace('"','').strip(',')
+            res[key] = val
+        assert json.dumps(fakeshit) == json.dumps(res)
+        assert rv.content_type == 'application/json'
 
 if __name__ == '__main__':
     unittest.main()
