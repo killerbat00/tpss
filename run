@@ -6,5 +6,8 @@ then
     python runserver-tests.py
 else
     export ENV=$ENV
+    echo $(date) >> ~/skateapp/dev.log
+    echo "################################################################################" >> ~/skateapp/dev.log
     python runserver.py > ~/skateapp/dev.log 2>&1 
+    echo "################################################################################" >> ~/skateapp/dev.log
 fi
