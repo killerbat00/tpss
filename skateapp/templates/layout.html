@@ -26,18 +26,39 @@
             </div>
             <nav class="collapse navbar-collapse tpss-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li id="home">
                 <a href="/">Home</a>
                 </li>
-                <li>
+                <li id="list">
                 <a href="/list">List</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li>
+                <li id="login">
                 <a href="/login">Login</a>
                 </li>
             </ul>
+            <script type="text/javascript">
+                var home = document.getElementById('home');
+                var list = document.getElementById('list');
+                var login = document.getElementById('login');
+                var x = window.location.pathname;
+                if (x == "/" && !home.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    home.className = "active";
+                } else if (x != "/" && home.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    home.className = home.className.replace( /(?:^|\s)active(?!\S)/g, '')
+                }
+                if (x == "/list" && !list.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    list.className = "active";
+                } else if (x != "/list" && list.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    list.className = list.className.replace( /(?:^|\s)active(?!\S)/g, '')
+                }
+                if (x == "/login" && !login.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    login.className = "active";
+                } else if (x != "/list" && login.className.match(/(?:^|\s)active(?!\S)/) ) {
+                    login.className = login.className.replace( /(?:^|\s)active(?!\S)/g, '')
+                }
+            </script>
             </nav>
         </div><!--/.nav-collapse -->
         </header>
