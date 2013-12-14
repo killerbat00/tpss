@@ -3,6 +3,7 @@ body {
     background-image: url('img/bg.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
+    overflow-x: hidden;
 }
 
 .btn-outline {
@@ -85,19 +86,8 @@ body {
     height: 100%;
 }
 
-.tpss-spots-container:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-}
-
 .tpss-spots-content {
-    clear: both;
-    margin: 25% 0;
-    display: inline-block;
-    vertical-align: middle;
+    margin: 14% 0;
     width: 100%;
     color: #fff;
 }
@@ -126,9 +116,8 @@ body {
 }
 
 .tpss-footer {
-    padding-bottom: 1px;
+    width: 100%;
     color: #777;
-    /*margin-top: -7%;*/
     text-align: center;
     background: rgba(72,52,106,.8);
     border-top: 1px solid #563d7c;

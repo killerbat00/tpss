@@ -3,7 +3,9 @@
 <div class="tpss-spots-container">
     <div class="tpss-spots-content">
         {% for spot in spots %}
-        <li><h3>{{ spot.name }}</h3>{{ spot.latitude }}{{ spot.longitude }}
+        <li>
+        <h3>{{ spot.name }}</h3>
+        <p>{{ spot.latitude }}<br/>{{ spot.longitude }}</p>
         {% else %}
         <li><em>Nothing here.</em>
         {% endfor %}
