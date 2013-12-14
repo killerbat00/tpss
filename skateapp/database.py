@@ -1,6 +1,7 @@
 from skateapp import app
 from contextlib import closing
 import sqlite3
+import os
 from flask import g
 
 def connect_db():
@@ -20,4 +21,5 @@ def query_db(query, args=(), one=False):
     cur.close()
     return (rv[0] if rv else None) if one else rv
 
-init_db()
+if not os.path.exists(app.config['DATABASE_URI']):
+    init_db()
