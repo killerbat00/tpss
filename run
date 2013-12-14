@@ -1,4 +1,5 @@
 #!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ENV=$1
 if [ $ENV = 'test' ]
 then
@@ -6,8 +7,8 @@ then
     python runserver-tests.py
 else
     export ENV=$ENV
-    echo $(date) >> ~/skateapp/dev.log
-    echo "################################################################################" >> ~/skateapp/dev.log
-    python runserver.py >> ~/skateapp/dev.log 2>&1 
-    echo "################################################################################" >> ~/skateapp/dev.log
+    echo $(date) >> $DIR/dev.log
+    echo "################################################################################" >> $DIR/dev.log
+    python runserver.py >> $DIR/dev.log 2>&1 
+    echo "################################################################################" >> $DIR/dev.log
 fi
