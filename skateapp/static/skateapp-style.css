@@ -106,6 +106,7 @@ body {
 .tpss-center-header {
     clear: both;
     margin: 10% 0;
+    margin-bottom:0%;
     display: inline-block;
     vertical-align: middle;
     width: 100%;
@@ -118,6 +119,18 @@ body {
     display: inline-block;
     width: 100%;
     color: #fff;
+}
+
+.tpss-login-form {
+    clear: both;
+    padding-top: -10%;
+    display: inline-block;
+    min-width: 80%;
+    margin-top: 0px;
+    background: rgba(72,52,106,.8);
+    border-left: 1px solid #563d7c;
+    border-right: 1px solid #563d7c;
+    border-bottom: 1px solid #563d7c;
 }
 
 .tpss-footer {
@@ -139,8 +152,4 @@ body {
 
 .footer-links li:first-child {
     padding-left: 0;
-}
-
-.skateapp-style {
-    text-align: center;
 }
