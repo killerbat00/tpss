@@ -90,12 +90,12 @@ body {
     text-align: center;
 }
 
-.tpss-spots-container {
+.tpss-outer-container {
     text-align: center;
     height: 100%;
 }
 
-.tpss-spots-container:before {
+.tpss-outer-container:before {
     content: '';
     display: inline-block;
     height: 100%;
@@ -103,7 +103,7 @@ body {
     margin-right: -0.25em;
 }
 
-.tpss-spots-header {
+.tpss-center-header {
     clear: both;
     margin: 10% 0;
     display: inline-block;
@@ -118,29 +118,6 @@ body {
     display: inline-block;
     width: 100%;
     color: #fff;
-}
-
-.tpss-centerbar-helper {
-    text-align: center;
-    height: 100%;
-}
-
-.tpss-centerbar-helper:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-}
-
-.tpss-centerbar {
-    clear: both;
-    margin: 10% 0;
-    display: inline-block;
-    vertical-align: middle;
-    width: 100%;
-    color: #fff;
-    background: rgba(74,52,106,.8);
 }
 
 .tpss-footer {
