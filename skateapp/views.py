@@ -20,3 +20,7 @@ def home():
 def list():
     cur = query_db('select * from spots')
     return render_template('list.html', spots=cur)
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
