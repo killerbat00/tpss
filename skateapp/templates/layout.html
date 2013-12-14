@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="find the perfect skate spot, wherever you are">
         <meta name="author" content="brian morrow">
@@ -13,48 +13,39 @@
 
     <body class="tpss-home">
         <header class="navbar navbar-inverse navbar-fixed-top tpss-nav" role="banner">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">TPSS</a>
-                </div>
-                <nav class="collapse navbar-collapse tpss-navbar-collapse" role="navigation">
-                <ul class="nav navbar-nav">
-                    <li class="active">
-                    <a href="#">Home</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                    <a href="/login">Login</a>
-                    </li>
-                </ul>
-                </nav>
-
-                </div><!--/.nav-collapse -->
-            </header>
-        </div>
-
-        <div class="tpss-centerbar-helper">
-            <div class="tpss-centerbar">
-                <h1>The Perfect Skate Spot</h1>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TPSS</a>
             </div>
-        </div>
-
-        <div class=skateapp-style>
-            {% block page %}{% endblock %}
-        </div>
-
+            <nav class="collapse navbar-collapse tpss-navbar-collapse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                <a href="/">Home</a>
+                </li>
+                <li>
+                <a href="/list">List</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                <a href="/login">Login</a>
+                </li>
+            </ul>
+            </nav>
+        </div><!--/.nav-collapse -->
+        </header>
+        {% block page %}{% endblock %}
         <footer class="tpss-footer" role="contentinfo">
         <p>background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
         <ul class="footer-links">
             <li>
-                Currently v0.0.1
+            Currently v0.0.1
             </li>
             <!--<li class="muted">&middot;</li>-->
         </ul>

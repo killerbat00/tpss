@@ -80,6 +80,28 @@ body {
     text-align: center;
 }
 
+.tpss-spots-container {
+    text-align: center;
+    height: 100%;
+}
+
+.tpss-spots-container:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+}
+
+.tpss-spots-content {
+    clear: both;
+    margin: 25% 0;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    color: #fff;
+}
+
 .tpss-centerbar-helper {
     text-align: center;
     height: 100%;

@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block page %}
+<div class="tpss-spots-container">
+    <div class="tpss-spots-content">
+        {% for spot in spots %}
+        <li><h3>{{ spot.name }}</h3>{{ spot.latitude }}{{ spot.longitude }}
+        {% else %}
+        <li><em>Nothing here.</em>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

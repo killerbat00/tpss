@@ -13,6 +13,10 @@ def teardown_request(exception):
         db.close()
 
 @app.route('/')
-def index():
+def home():
+    return render_template('home.html')
+
+@app.route('/list')
+def list():
     cur = query_db('select * from spots')
-    return render_template('index.html', spots=cur)
+    return render_template('list.html', spots=cur)
