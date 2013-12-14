@@ -35,7 +35,7 @@ class SkateAppTestCase(unittest.TestCase):
             assert [before[r] for r in before.keys()] == [1, unicode('name'), 100, 100, unicode('photo')]
             assert after == []
 
-    def test_homepage(self):
+    def test_home_page(self):
         rv = self.app.get('/')
         footer = 'background image'
         name = 'The Perfect Skate Spot'
@@ -49,6 +49,12 @@ class SkateAppTestCase(unittest.TestCase):
             assert res == []
         assert 'Nothing here.' in rv.data
 
+    def test_login_page(self):
+        rv = self.app.get('/login')
+        text = 'Login'
+        footer = 'background image'
+        assert footer in rv.data
+        assert text in rv.data
 
 if __name__ == '__main__':
     unittest.main()
