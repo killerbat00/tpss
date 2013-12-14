@@ -55,6 +55,9 @@ class SkateAppTestCase(unittest.TestCase):
         footer = 'background image'
         assert footer in rv.data
         assert text in rv.data
+        assert 'Username' in rv.data
+        assert 'Password' in rv.data
+        assert 'Sign in' in rv.data
 
 if __name__ == '__main__':
     unittest.main()
