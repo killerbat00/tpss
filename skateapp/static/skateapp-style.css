@@ -1,6 +1,74 @@
 body {
+    position: relative;
     padding-top: 50px;
 }
+
+.btn-outline {
+    color: #563d7c;
+    background-color: #fff;
+    border-color: #e5e5e5;
+}
+.btn-outline:hover,
+.btn-outline:focus,
+.btn-outline:active {
+    color: #fff;
+    background-color: #563d7c;
+    border-color: #563d7c;
+}
+
+.btn-outline-inverse {
+    color: #fff;
+    background-color: transparent;
+    border-color: #cbdfe3;
+}
+.btn-outline-inverse:hover,
+.btn-outline-inverse:focus,
+.btn-outline-inverse:active {
+    color: #563d7c;
+    text-shadow: none;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.tpss-nav {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+    background-color: #563d7c;
+    border-color: #463265;
+    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+
+.tpss-nav .navbar-collapse {
+    border-color: #463265;
+}
+
+.tpss-nav .navbar-brand {
+    color: #fff;
+}
+
+.tpss-nav .navbar-nav > li.active > a {
+    color: #fff;
+    background-color: #4A346A;
+}
+
+.tpss-nav .navbar-nav > li.active > a:hover {
+    color: #fff;
+    background-color: #4A346A;
+}
+
+.tpss-nav .navbar-nav > li > a {
+    color: #cdbfe3;
+}
+.tpss-nav .navbar-nav > li > a:hover {
+    color: #fff;
+}
+.tpss-nav .navgar-toggle {
+    border-color: #563d7c;
+}
+.tpss-nav .navbar-toggle:hover {
+    background-color: #463265;
+    border-color: #463265;
+}
+
 .skateapp-style {
     padding: 40px 15px;
     text-align: center;
