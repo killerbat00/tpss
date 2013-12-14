@@ -1,4 +1,18 @@
 {% extends "layout.html" %}
+{% block nav %}
+<ul class="nav navbar-nav">
+    <li id="home">
+    <a href="/">Home</a>
+    <li id="list" class="active">
+    <a href="/list">List</a>
+    </li>
+</ul>
+<ul class="nav navbar-nav navbar-right">
+    <li id="login">
+    <a href="/login">Login</a>
+    </li>
+</ul>
+{% endblock %}
 {% block page %}
 <div class="tpss-outer-container">
     <div class="tpss-center-header">
