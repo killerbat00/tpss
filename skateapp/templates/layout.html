@@ -11,7 +11,7 @@
         <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
     </head>
 
-    <body>
+    <body class="tpss-home">
         <header class="navbar navbar-inverse navbar-fixed-top tpss-nav" role="banner">
             <div class="container">
                 <div class="navbar-header">
@@ -39,12 +39,26 @@
                 </div><!--/.nav-collapse -->
             </header>
         </div>
-        <div class="container">
-            <div class="skateapp-style">
+
+        <div class="tpss-centerbar-helper">
+            <div class="tpss-centerbar">
                 <h1>The Perfect Skate Spot</h1>
-                {% block page %}{% endblock %}
             </div>
-        </div><!-- /.container -->
+        </div>
+
+        <div class=skateapp-style>
+            {% block page %}{% endblock %}
+        </div>
+
+        <footer class="tpss-footer" role="contentinfo">
+        <p>background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
+        <ul class="footer-links">
+            <li>
+                Currently v0.0.1
+            </li>
+            <!--<li class="muted">&middot;</li>-->
+        </ul>
+        </footer>
 
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="{{ url_for('static', filename='dist/js/bootstrap.min.js') }}"></script>
