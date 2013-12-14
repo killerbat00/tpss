@@ -63,11 +63,13 @@ body {
 .tpss-nav .navbar-nav > li.active > a {
     color: #fff;
     background-color: #4A346A;
+    border-bottom: 2px solid #fff;
 }
 
 .tpss-nav .navbar-nav > li.active > a:hover {
     color: #fff;
     background-color: #4A346A;
+    border-bottom: 2px solid #000;
 }
 
 .tpss-nav .navbar-nav > li > a {
@@ -140,6 +142,26 @@ body {
     text-align: center;
     background: rgba(72,52,106,.8);
     border-top: 1px solid #563d7c;
+}
+
+#bg-credit > a {
+    border-bottom: 2px solid #fff;
+    text-decoration: none;
+    color: #fff;
+}
+
+#bg-credit > a:hover {
+    border-bottom-color: #000;
+}
+
+#github {
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 2px solid #fff;
+}
+
+#github:hover {
+    border-bottom-color: #000;
 }
 
 .footer-links {

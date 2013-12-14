@@ -9,6 +9,7 @@
         <title>The Perfect Skate Spot</title>
         <link href='{{ url_for('static', filename='dist/css/bootstrap.css') }}' rel='stylesheet'>
         <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     </head>
 
     <body class="tpss-home">
@@ -32,12 +33,15 @@
         {% block page %}{% endblock %}
     </div>
         <footer class="tpss-footer" role="contentinfo">
-        <p>background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
+        <p id="bg-credit">background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
         <ul class="footer-links">
             <li>
             Currently v0.0.1
             </li>
-            <!--<li class="muted">&middot;</li>-->
+            <li class="muted">&middot;</li>
+            <li><a id="github" href="https://github.com/killerbat00/" target="_blank">Github <i class="fa fa-github"></i></a></li>
+            <li class="muted">&middot;</li>
+            <li><a id="github" href="http://brianmorrow.net" target="_blank">brian morrow</a></li>
         </ul>
         </footer>
 
