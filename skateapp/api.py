@@ -22,6 +22,15 @@ def get_single_spot(id):
     cur = query_db('select * from spots where id=?',[id],one=True)
     return json.jsonify(cur)
 
+@app.route('/api/spots/<id>', methods=['DELETE'])
+def delete_single_spot(id):
+    try:
+        g.db.execute('delete from spots where id=?',[id])
+        g.db.commit()
+    except sqlite3.Error,e:
+        return e
+    return redirect(url_for('get_spots'))
+
 @app.route('/api/spots/', methods=['POST'])
 def add_spot():
     items = request.form.to_dict()
