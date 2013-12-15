@@ -40,7 +40,9 @@ def update_single_spot(id):
         abort(404)
     for a in avail:
         try:
-            g.db.execute('update spots set '+str(a)+'=? where id=?', [items[a], eyed])
+            #this doesn't seem secure
+            g.db.execute('update spots set %s=? where id=?'%str(a), [items[a], eyed])
+
             g.db.commit()
         except sqlite3.Error, e:
             return e
