@@ -1,10 +1,7 @@
 html,
-body {
-    margin: 0px;
-    height: 100%;
-    width: 100%;
-    background: url(img/bg.jpg);
-    background-size: cover;
+body,#map {
+    margin: 2% 0;
+    height: 94.1%;
 }
 
 #wrap {

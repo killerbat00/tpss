@@ -8,12 +8,12 @@
         <meta name="author" content="brian morrow">
         <title>The Perfect Skate Spot</title>
         <link href='{{ url_for('static', filename='dist/css/bootstrap.css') }}' rel='stylesheet'>
-        <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
+        {% block style %} {% endblock %}
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     </head>
 
     <body class="tpss-home">
-    <div id="wrap">
+    {%block wrap %}{%endblock%}
         <header class="navbar navbar-inverse navbar-fixed-top tpss-nav" role="banner">
         <div class="container">
             <div class="navbar-header">
@@ -26,12 +26,13 @@
                 <a class="navbar-brand" href="/">TPSS</a>
             </div>
             <nav class="collapse navbar-collapse tpss-navbar-collapse" role="navigation">
-            {% block nav %} {% endblock %}
+                {% block nav %} {% endblock %}
             </nav>
         </div><!--/.nav-collapse -->
         </header>
-        {% block page %}{% endblock %}
-    </div>
+    {% block map %}{% endblock %}
+    {% block page %}{% endblock %}
+        </div>
         <footer class="tpss-footer" role="contentinfo">
         <p id="bg-credit">background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
         <ul class="footer-links">
