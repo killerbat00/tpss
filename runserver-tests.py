@@ -88,6 +88,25 @@ class SkateAppTestCase(unittest.TestCase):
         self.app.delete('/api/spots/'+id)
         g = self.app.get('/api/spots/')
         assert g.data == '{\n  "results": []\n}'
+        assert g.content_type == 'application/json'
+
+    def test_api_update_single_spot(self):
+        d = dict(name = 'test_spot',latitude = 69,longitude = 69,photo = 'test/path')
+        newd = dict(name = 'new_test_spot')
+        new2d = dict(name = 'newer_test_post', latitude = 30)
+        post = self.app.post('/api/spots/', data=d, follow_redirects=True)
+        id = str(json.loads(post.data)["results"][0]["id"])
+        put = self.app.post('/api/spots/'+id, data=newd, follow_redirects=True)
+        put2 = self.app.post('/api/spots/'+id, data=new2d, follow_redirects=True)
+        putres = json.loads(put.data)
+        put2res = json.loads(put2.data)
+        assert put.status_code == 200
+        assert put.content_type == 'application/json'
+        assert len(set(putres.items()) & set(d.items())) == len(d) - 1
+        assert len(set(putres.items()) & set(newd.items())) == 1
+
+        assert len(set(put2res.items()) & set(d.items())) == len(d) - 2
+        assert len(set(put2res.items()) & set(new2d.items())) == 2
 
 if __name__ == '__main__':
     unittest.main()

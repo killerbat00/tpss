@@ -6,6 +6,10 @@ from flask import json, make_response
 def add_spot_page():
     return render_template('add.html')
 
+@app.route('/api/update/', methods=['GET'])
+def update_spot_page():
+    return render_template('update.html')
+
 def dict_from_row(row):
     return dict(zip(row.keys(), row))
 
@@ -21,6 +25,19 @@ def get_spots():
 def get_single_spot(id):
     cur = query_db('select * from spots where id=?',[id],one=True)
     return json.jsonify(cur)
+
+@app.route('/api/spots/<id>', methods=['POST'])
+def update_single_spot(id):
+    eyed = id
+    items = request.form.to_dict()
+    avail = [k for k in items.keys() if items[k]]
+    for a in avail:
+        try:
+            g.db.execute('update spots set '+str(a)+'=? where id=?', [items[a], eyed])
+            g.db.commit()
+        except sqlite3.Error, e:
+            return e
+    return redirect(url_for('get_single_spot', id=eyed))
 
 @app.route('/api/spots/<id>', methods=['DELETE'])
 def delete_single_spot(id):
