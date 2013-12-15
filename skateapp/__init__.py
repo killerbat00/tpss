@@ -4,6 +4,9 @@ import config
 
 app = Flask(__name__)
 
+if not os.environ['ENV']:
+    app.config.from_object(config.Config())
+
 if os.environ['ENV'].lower() == 'dev':
     app.config.from_object(config.DevelopmentConfig())
 elif os.environ['ENV'].lower() == 'test':
