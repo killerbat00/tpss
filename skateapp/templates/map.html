@@ -7,10 +7,7 @@
 {% block nav %}
                 <ul class="nav navbar-nav">
                     <li id="home" class="active">
-                        <a href="/">home</a>
-                    </li>
-                    <li id="list">
-                        <a href="#">list</a>
+                        <a href="/">map</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -22,6 +19,7 @@
 {% block map %}
         <div id="map"></div>
         <script type="text/javascript">
+            var lonlat = new OpenLayers.LonLat(35, 79);
             var map = new OpenLayers.Map({
                 div: "map",
                 layers: [
@@ -37,9 +35,11 @@
                     new OpenLayers.Control.PanZoom(),
                     new OpenLayers.Control.Attribution()
                 ],
-                center: [0,0],
+                center: [lonlat.lon,lonlat.lat],
                 zoom: 3
             });
-            map.addControl(new OpenLayers.Control.LayerSwitcher());
         </script>
+{% endblock %}
+{% block imgcred %}
+        <br>
 {% endblock %}

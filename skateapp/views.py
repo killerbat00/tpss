@@ -14,7 +14,7 @@ def teardown_request(exception):
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('map.html')
 
 @app.route('/login')
 def login():
