@@ -1,10 +1,10 @@
 from skateapp import app
 from skateapp import database
 from skateapp import config
+from flask import json
 import unittest
 import os
 import sqlite3
-import json
 
 class SkateAppTestCase(unittest.TestCase):
     def setUp(self):
@@ -38,31 +38,56 @@ class SkateAppTestCase(unittest.TestCase):
 
     def test_home_page(self):
         rv = self.app.get('/')
-        footer = 'background image'
-        name = 'The Perfect Skate Spot'
+        footer = 'brian morrow'
+        gh = 'github'
         assert footer in rv.data
-        assert name in rv.data
+        assert gh in rv.data
 
     def test_login_page(self):
         rv = self.app.get('/login')
         text = 'Login'
-        footer = 'background image'
+        footer = 'brian morrow'
         assert footer in rv.data
         assert text in rv.data
         assert 'Username' in rv.data
         assert 'Password' in rv.data
         assert 'Sign in' in rv.data
 
-    def test_api_spots(self):
-        res = {}
-        fakeshit = {"id":"1","name":"spot1","latitude": "100", "longitude": "100", "photo":"test/photo"}
+    def test_api_get_all_spots(self):
         rv = self.app.get('/api/spots/')
-        for line in rv.data.split('\n')[1:len(rv.data.split('\n'))-1]:
-            key = line.split()[0].replace('"','').strip(':')
-            val = line.split()[1].replace('"','').strip(',')
-            res[key] = val
-        assert json.dumps(fakeshit) == json.dumps(res)
+        assert rv.data == '{\n  "results": []\n}'
         assert rv.content_type == 'application/json'
+
+    def test_api_insert_spot(self):
+        d = dict(name = 'test_spot',latitude = 69,longitude = 69,photo = 'test/path')
+        notd = dict(name = 'test_spot1', latitude = 70, longitude = 70, photo = 'test/path1')
+        rv = self.app.post('/api/spots/', data=d, follow_redirects=True)
+        res = json.loads(rv.data)["results"][0]
+        assert len(set(res.items()) & set(d.items())) == len(d)
+        assert len(set(res.items()) & set(notd.items())) == 0
+        assert rv.content_type == 'application/json'
+
+    def test_api_get_single_spot(self):
+        d = dict(name = 'test_spot',latitude = 69,longitude = 69,photo = 'test/path')
+        notd = dict(name = 'test_spot1', latitude = 70, longitude = 70, photo = 'test/path1')
+
+        post = self.app.post('/api/spots/', data=d, follow_redirects=True)
+        id = str(json.loads(post.data)["results"][0]["id"])
+        good = self.app.get('/api/spots/'+id)
+
+        goodres = json.loads(good.data)
+        assert good.status_code == 200
+        assert good.content_type == 'application/json'
+        assert len(set(goodres.items()) & set(d.items())) == len(d)
+        assert len(set(goodres.items()) & set(notd.items())) == 0
+
+    def test_api_delete_single_spot(self):
+        d = dict(name = 'test_spot',latitude = 69,longitude = 69,photo = 'test/path')
+        post = self.app.post('/api/spots/', data=d, follow_redirects=True)
+        id = str(json.loads(post.data)["results"][0]["id"])
+        self.app.delete('/api/spots/'+id)
+        g = self.app.get('/api/spots/')
+        assert g.data == '{\n  "results": []\n}'
 
 if __name__ == '__main__':
     unittest.main()
