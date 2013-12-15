@@ -1,6 +1,6 @@
 from skateapp import app
 from database import *
-from flask import render_template, flash, url_for
+from flask import render_template, flash, url_for, request, redirect
 
 @app.before_request
 def before_request():
@@ -15,11 +15,6 @@ def teardown_request(exception):
 @app.route('/')
 def home():
     return render_template('home.html')
-
-#@app.route('/list')
-#def list():
-#    cur = query_db('select * from spots')
-#    return render_template('list.html', spots=cur)
 
 @app.route('/login')
 def login():
