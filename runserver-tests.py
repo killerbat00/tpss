@@ -6,6 +6,7 @@ import unittest
 import os
 import sqlite3
 
+# bro these are fugly
 class SkateAppTestCase(unittest.TestCase):
     def setUp(self):
         app.config.from_object(config.TestingConfig())
@@ -107,6 +108,19 @@ class SkateAppTestCase(unittest.TestCase):
 
         assert len(set(put2res.items()) & set(d.items())) == len(d) - 2
         assert len(set(put2res.items()) & set(new2d.items())) == 2
+
+    def test_all_404s(self):
+        err = self.app.get('/asdf')
+        assert err.status_code == 404
+        assert '404' in err.data
+
+        err = self.app.get('/api/spots/asdf')
+        assert err.status_code == 404
+        assert '404' in err.data
+
+        err = self.app.post('/api/spots/nope',data=dict(),follow_redirects=False)
+        assert err.status_code == 404
+        assert '404' in err.data
 
 if __name__ == '__main__':
     unittest.main()

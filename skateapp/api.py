@@ -1,6 +1,6 @@
 from skateapp import app
 from views import *
-from flask import json, make_response
+from flask import json, make_response, abort
 
 @app.route('/api/add/', methods=['GET'])
 def add_spot_page():
@@ -24,13 +24,20 @@ def get_spots():
 @app.route('/api/spots/<id>', methods=['GET'])
 def get_single_spot(id):
     cur = query_db('select * from spots where id=?',[id],one=True)
-    return json.jsonify(cur)
+    if cur:
+        return json.jsonify(cur)
+    else:
+        abort(404)
 
 @app.route('/api/spots/<id>', methods=['POST'])
 def update_single_spot(id):
     eyed = id
     items = request.form.to_dict()
     avail = [k for k in items.keys() if items[k]]
+    #dude, that's ugly. so many queries.
+    cur = query_db('select * from spots where id=?',[eyed],one=True)
+    if not cur:
+        abort(404)
     for a in avail:
         try:
             g.db.execute('update spots set '+str(a)+'=? where id=?', [items[a], eyed])
