@@ -54,6 +54,12 @@ class SkateAppTestCase(unittest.TestCase):
         assert 'Password' in rv.data
         assert 'Sign in' in rv.data
 
+    def test_about_page(self):
+        rv = self.app.get('/about')
+        text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam enim, rutrum id lorem ut, pharetra varius arcu. Nulla pretium commodo turpis ut faucibus. Praesent euismod nunc quis elementum sodales. Maecenas tincidunt, sapien quis aliquet elementum, ipsum diam rutrum risus, ac auctor mi sem ut purus. Vestibulum odio tortor, vestibulum id urna ut, imperdiet facilisis purus. Nulla facilisi. Mauris blandit ultrices purus vel euismod.'
+        assert rv.status_code == 200
+        assert text in rv.data
+
     def test_api_get_all_spots(self):
         rv = self.app.get('/api/spots/')
         assert rv.data == '{\n  "results": []\n}'
