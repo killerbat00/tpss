@@ -1,6 +1,6 @@
 from skateapp import app
 from views import *
-from flask import json, make_response, abort
+from flask import json, make_response
 
 @app.route('/api/add/', methods=['GET'])
 def add_spot_page():
@@ -42,7 +42,6 @@ def update_single_spot(id):
         try:
             #this doesn't seem secure
             g.db.execute('update spots set %s=? where id=?'%str(a), [items[a], eyed])
-
             g.db.commit()
         except sqlite3.Error, e:
             return e

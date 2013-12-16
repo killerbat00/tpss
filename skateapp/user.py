@@ -4,7 +4,7 @@ from flask.ext.login import *
 
 class User(UserMixin):
     def is_active(self):
-        return True
+        return session['active']
 
     def is_authenticated(self):
         return True
@@ -14,4 +14,3 @@ class User(UserMixin):
 
     def register(self):
         pass
-

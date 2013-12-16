@@ -13,6 +13,8 @@ class Config(object):
 class DevelopmentConfig(Config):
     DEBUG = True
     DATABASE_URI = "/tmp/%s_dev.sqlite" % project_name
+    ADMIN_USER='admin'
+    ADMIN_PW='default'
 
 class TestingConfig(Config):
     TESTING = True

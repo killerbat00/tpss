@@ -1,6 +1,6 @@
 from skateapp import app
 from database import *
-from flask import render_template, flash, url_for, request, redirect
+from flask import render_template, flash, url_for, request, redirect, abort
 from flask.ext.login import login_required
 
 @app.before_request
@@ -29,11 +29,19 @@ def home():
 def about():
     return render_template('about.html')
 
-@app.route('/login', methods=['GET'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
+    if request.method == 'POST':
+        if request.form['email'] == app.config['ADMIN_USER'] and request.form['password'] == app.config['ADMIN_PW']:
+            session['active'] = True
+            return redirect(url_for('home'))
+        else:
+            return redirect(url_for('login'))
     return render_template('login.html')
 
 @app.route('/secret')
-@login_required
 def secret():
-    return
+    if session.get('active'):
+        return redirect(url_for('home'))
+    else:
+        abort(404)

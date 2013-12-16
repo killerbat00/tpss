@@ -2,7 +2,7 @@ from skateapp import app
 from contextlib import closing
 import sqlite3
 import os
-from flask import g
+from flask import g, session
 
 def connect_db():
     rv = sqlite3.connect(app.config['DATABASE_URI'])
