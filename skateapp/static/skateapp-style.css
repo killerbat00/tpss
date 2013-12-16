@@ -57,7 +57,7 @@ body {
 }
 
 .tpss-nav .navbar-brand {
-    color: #fff;
+    color: #cdbfe3;
 }
 
 .tpss-nav .navbar-nav > li.active > a {
@@ -130,6 +130,13 @@ body {
     border-left: 1px solid #563d7c;
     border-right: 1px solid #563d7c;
     border-bottom: 1px solid #563d7c;
+}
+
+.panels {
+    position: relative;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
 }
 
 .tpss-footer {
