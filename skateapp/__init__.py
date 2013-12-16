@@ -1,7 +1,6 @@
 from flask import Flask
 import os
 import config
-from flask.ext.login import *
 
 app = Flask(__name__)
 
