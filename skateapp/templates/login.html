@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
 {% block style %}
         <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
+        <link href='{{ url_for('static', filename='skateapp-style-login.css') }}' rel='stylesheet'>
 {% endblock %}
 {%block wrap %}
+    <div class="jumbotron"></div>
     <div id="wrap">
 {% endblock %}
 {% block nav %}
@@ -10,6 +12,8 @@
                     <li id="map">
                         <a href="/">map</a>
                     </li>
+                    <li id="about">
+                        <a href="/about">about</a>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li id="login" class="active">
@@ -18,37 +22,21 @@
                 </ul>
 {% endblock %}
 {% block page %}
-        <div class="tpss-outer-container">
-            <div class="tpss-center-header">
-                <h1>Login</h1>
-            </div>
-            <div class="tpss-login-form">
-                <form class="form-horizontal" role="form" action="{{ url_for('login') }}" method=post>
-                    <br>
-                    <div class="form-group">
-                        <label for="inputUsername" class="col-sm-4 control-label">Username</label>
-                        <div class="col-sm-4">
-                            <input type="username" class="form-control" id="inputUsername" placeholder="Username">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Password</label>
-                        <div class="col-sm-4">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-4">
-                            <button type="submit" class="btn btn-default">Sign in</button>
-                        </div>
-                    </div>
+            <div class="container login-cont">
+            <div class="tpss-login-content">
+                <form class="form-signin" role="form" action="{{ url_for('login') }}" method=post>
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <input type="text" class="form-control" placeholder="Email address" required autofocus>
+                    <input type="password" class="form-control" placeholder="Password" required>
+                    <button class="btn btn-lg btn-primary btn-block login" type="submit">Sign in</button>
                 </form>
             </div>
-        </div>
+            </div>
 {% endblock %}
 {% block optional %}
+    <div id="push"></div>
     </div>
 {% endblock %}
 {% block imgcred %}
-        <p id="bg-credit">background image via <a href="http://www.flickr.com/photos/baboon/12648121">baboon</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
+        <p id="bg-credit">image via <a href="http://www.flickr.com/photos/oilinki">oilinki</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
 {% endblock %}

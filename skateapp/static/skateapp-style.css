@@ -16,7 +16,6 @@ body {
     height: auto !important;
     height 100%;
     margin: 0 auto -64px;
-    padding: 0 0 64px;
 }
 
 .btn-outline {
@@ -96,54 +95,9 @@ body {
     text-align: center;
 }
 
-.tpss-outer-container {
-    text-align: center;
-    height: 100%;
-}
-
-.tpss-outer-container:before {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    margin-right: -0.25em;
-}
-
-.tpss-center-header {
-    margin: 10% 0;
-    min-width: 80%;
-    margin-left: -3px;
-    margin-bottom:0%;
-    display: inline-block;
-    color: #fff;
-    background: rgba(74,52,106,.8);
-}
-
-.tpss-spots-content {
-    clear: both;
-    display: inline-block;
-    width: 100%;
-    color: #fff;
-}
-
-.tpss-login-form {
-    padding-top: -10%;
-    display: inline-block;
-    min-width: 80%;
-    background: rgba(72,52,106,.8);
-    border-left: 1px solid #563d7c;
-    border-right: 1px solid #563d7c;
-    border-bottom: 1px solid #563d7c;
-}
-
-.panels {
-    position: relative;
-    height: 100%;
-    min-height: 100%;
-    width: 100%;
-}
-
 .tpss-footer {
+    position: relative;
+    z-index: 100000000;
     height: 64px;
     color: #fff;
     text-align: center;

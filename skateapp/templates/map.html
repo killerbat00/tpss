@@ -30,13 +30,6 @@
                     new OpenLayers.Layer.OSM("OSM (with buffer)", null, {buffer: 2})
                 ],
                 controls: [
-                    new OpenLayers.Control.Navigation({
-                        dragPanOptions: {
-                            enableKinetic: true
-                        }
-                    }),
-                    new OpenLayers.Control.PanZoom(),
-                    new OpenLayers.Control.Attribution()
                 ],
                 center: [lonlat.lon,lonlat.lat],
                 zoom: 3
