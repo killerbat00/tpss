@@ -48,7 +48,7 @@ def update_single_spot(id):
             return e
         finally:
             g.db.commit()
-    return redirect(url_for('get_single_spot', id=eyed))
+    return redirect(url_for('api.get_single_spot', id=eyed))
 
 @mod.route('/spots/<id>', methods=['DELETE'])
 def delete_single_spot(id):
@@ -58,7 +58,7 @@ def delete_single_spot(id):
         return e
     finally:
         g.db.commit()
-    return redirect(url_for('get_spots'))
+    return redirect(url_for('api.get_spots'))
 
 @mod.route('/spots/', methods=['POST'])
 def add_spot():
@@ -70,4 +70,4 @@ def add_spot():
         return e
     finally:
         g.db.commit()
-    return redirect(url_for('get_spots'))
+    return redirect(url_for('api.get_spots'))
