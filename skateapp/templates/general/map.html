@@ -1,0 +1,41 @@
+{% extends "../layout.html" %}
+{% block style %}
+        <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
+        <link href='{{ url_for('static', filename='skateapp-style-map.css') }}' rel='stylesheet'>
+        <script src='{{ url_for('static', filename='OpenLayers.js') }}'></script>
+{% endblock %}
+{% block nav %}
+                <ul class="nav navbar-nav">
+                    <li id="home" class="active">
+                        <a href="/">map</a>
+                    </li>
+                    <li id="about">
+                        <a href="/about">about</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="login">
+                        <a href="/login">login</a>
+                    </li>
+                </ul>
+{% endblock %}
+{% block map %}
+        <div id="map"></div>
+        <script type="text/javascript">
+            var lonlat = new OpenLayers.LonLat(35, 79);
+            var map = new OpenLayers.Map({
+                div: "map",
+                layers: [
+                    new OpenLayers.Layer.OSM("OSM (without buffer)"),
+                    new OpenLayers.Layer.OSM("OSM (with buffer)", null, {buffer: 2})
+                ],
+                controls: [
+                ],
+                center: [lonlat.lon,lonlat.lat],
+                zoom: 3
+            });
+        </script>
+{% endblock %}
+{% block imgcred %}
+        <br>
+{% endblock %}

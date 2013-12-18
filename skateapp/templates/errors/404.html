@@ -1,0 +1,43 @@
+{% extends "../layout.html" %}
+{% block style %}
+        <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
+        <link href='{{ url_for('static', filename='skateapp-style-about.css') }}' rel='stylesheet'>
+{% endblock %}
+{% block wrap %}
+    <div class="jumbotron"></div>
+    <div id="wrap">
+{% endblock %}
+{% block nav %}
+                <ul class="nav navbar-nav">
+                    <li id="home">
+                        <a href="/">map</a>
+                    </li>
+                    <li id="about">
+                        <a href="/about">about</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="login">
+                        <a href="/login">login</a>
+                    </li>
+                </ul>
+{% endblock %}
+{% block page %}
+        <div class="container about-cont">
+        <div class="tpss-about-content">
+            <h1 style="font-size: 60px;">404</h1>
+            <hr>
+            <div style="width:40%;padding-bottom:2%;">
+                <p>page not found</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+{% endblock %}
+{% block optional %}
+    <div id="push"></div>
+    </div>
+{% endblock %}
+{% block imgcred %}
+        <p id="bg-credit">image via <a href="http://www.flickr.com/photos/oilinki">oilinki</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
+{% endblock %}
