@@ -2,7 +2,8 @@ import logging
 import os
 from datetime import timedelta
 
-project_name = "skateapp"
+project_name = 'skateapp'
+version = '0.1'
 adm_user = 'bmorrow'
 adm_pwd = 'f56/SQdUyq6tOI+8nB/E0g=='
 
@@ -11,6 +12,7 @@ class Config(object):
     TESTING = False
     DATABASE_URI = "/tmp/%s_default.sqlite" % project_name
     SECRET_KEY = "skateappskateapp"
+    VERSION = version
 
 class DevelopmentConfig(Config):
     DEBUG = True
