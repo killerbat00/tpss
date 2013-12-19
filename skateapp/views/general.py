@@ -42,5 +42,8 @@ def dashboard():
 
 @mod.route('/search/', methods=['GET', 'POST'])
 def search():
-    query = request.form['query']
-    return render_template('general/search_results.html', q=query)
+    if request.form.has_key('query'):
+        query = request.form['query']
+        return render_template('general/search_results.html', q=query)
+    else:
+        return redirect(url_for('general.index'))
