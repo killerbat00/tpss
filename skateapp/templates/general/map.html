@@ -37,6 +37,10 @@
         {% for message in get_flashed_messages() %}
         <div id="tpss-flash-msg"> {{ message }} </div>
         {% endfor %}
+        <div id="search">
+            <input type="text" class="form-control map-search" placeholder="Find a spot...">
+            <button type="submit" class="btn btn-primary btn-lg btn-block map">Search</button>
+        </div>
 {% endblock %}
 {% block map %}
         <div id="map"></div>
@@ -59,10 +63,6 @@
                 zoom: 4
             });
         </script>
-        <div id="search">
-            <input type="text" class="form-control map-search" placeholder="Find a spot...">
-            <button type="submit" class="btn btn-primary btn-lg btn-block map">Search</button>
-        </div>
 
 {% endblock %}
 {% block imgcred %}

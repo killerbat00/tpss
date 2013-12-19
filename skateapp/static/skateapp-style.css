@@ -17,6 +17,7 @@ body {
 }
 
 #wrap {
+    position: relative;
     min-height: 100%;
     height: auto !important;
     height 100%;
@@ -55,13 +56,15 @@ body {
 #search {
     position: absolute;
     z-index: 111111111;
-    margin-top: -300px;
-    margin-left: 30%;
-    background: rgba(72,52,106,.8);
+    top: 45%;
+    left: 45%;
+    background: rgba(72,52,106,.6);
     width: 40%;
-    max-height: 15%;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-radius: 15px;
+    -webkit-transform: translate(-45%, -45%);
+    transform: translate(-45%, -45%);
 }
 
 .map-search {
