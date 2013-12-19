@@ -47,7 +47,11 @@
             <h1>search results</h1>
             <hr>
             <div style="width:50%;padding-bottom:2%;">
+                {% if q %}
                 Your search for <strong>{{ q }}</strong> returned nothing.
+                {% else %}
+                You didn't enter a query.
+                {% endif %}
             </div>
         <hr>
         </div>

@@ -4,9 +4,12 @@ body {
 }
 
 html,
-body,#map {
-    margin: 2% 0;
-    height: 94.1%;
+body {
+    height: 100%;
+}
+
+#map {
+    height: 97.5%;
 }
 
 div.olMap {
