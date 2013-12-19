@@ -15,8 +15,16 @@
                     <li id="about" class="active">
                         <a href="/about">about</a>
                     </li>
+                    {% if g.user %}
+                    <li id="dashboard">
+                        <a href="/dashboard">dashboard</a>
+                    </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <p class="navbar-text navbar-right">
+                        Welcome, {{ g.user.username if g.user.username else 'guest'}} 
+                    </p>
                     {% if g.user %}
                     <li id="logout">
                         <a href="/logout">logout</a>

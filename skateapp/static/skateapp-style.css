@@ -59,6 +59,10 @@ body {
     box-shadow: 0 1px 0 rgba(255,255,255,.1);
 }
 
+.navbar-text {
+    color: rgb(127, 140, 141);
+}
+
 .tpss-nav .navbar-collapse {
     border-color: #463265;
     text-align: center;

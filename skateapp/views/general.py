@@ -35,7 +35,7 @@ def logout():
         flash(u'You have successfully logged out.')
     return redirect(url_for('general.index'))
 
-@mod.route('/secret/')
+@mod.route('/dashboard/')
 @requires_login
-def req_login():
-    return render_template('general/req_login.html')
+def dashboard():
+    return render_template('general/dashboard.html')

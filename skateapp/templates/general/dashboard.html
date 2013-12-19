@@ -15,11 +15,16 @@
                     <li id="about">
                         <a href="/about">about</a>
                     </li>
-                    <li id="secret" class="active">
-                        <a href="/secret">secret</a>
+                    {% if g.user %}
+                    <li id="dashboard" class="active">
+                        <a href="/dashboard">dashboard</a>
                     </li>
+                    {% endif %}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <p class="navbar-text navbar-right">
+                        Welcome, {{ g.user.username if g.user.username else 'guest'}} 
+                    </p>
                     {% if g.user %}
                     <li id="logout">
                         <a href="/logout">logout</a>
@@ -39,12 +44,9 @@
 {% block page %}
         <div class="container about-cont">
         <div class="tpss-about-content">
-            <h1>login test</h1>
+            <h1>dashboard</h1>
             <hr>
             <div style="width:40%;padding-bottom:2%;">
-            <p>
-            Very good. This page is only visible if you're logged in.
-            </p>
             <hr>
         </div>
     </div>
