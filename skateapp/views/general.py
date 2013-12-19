@@ -42,4 +42,5 @@ def dashboard():
 
 @mod.route('/search/', methods=['GET', 'POST'])
 def search():
-    return render_template('general/search_results.html')
+    query = request.form['query']
+    return render_template('general/search_results.html', q=query)
