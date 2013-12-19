@@ -43,7 +43,7 @@ def before_request():
             else:
                 g.user = None
                 session['user_id'] = None
-    except KeyError, e:
+    except KeyError:
         g.user = None
         session['user_id'] = None
 
