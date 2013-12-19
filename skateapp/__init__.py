@@ -1,15 +1,16 @@
-from flask import Flask, session, g, render_template
+from flask import Flask, render_template, session, g
 import os
 import config
 
 app = Flask(__name__)
+env = os.environ['ENV'].lower()
 
-if not os.environ['ENV']:
+if not env:
     app.config.from_object(config.Config())
 
-if os.environ['ENV'].lower() == 'dev':
+if env == 'dev':
     app.config.from_object(config.DevelopmentConfig())
-elif os.environ['ENV'].lower() == 'test':
+elif env == 'test':
     app.config.from_object(config.TestingConfig())
 else:
     app.config.from_object(config.Config())
@@ -26,9 +27,10 @@ def page_not_found(e):
 def server_error(e):
     return render_template('errors/500.html'), 500
 
+from skateapp.database import database
 @app.before_request
 def before_request():
-    g.db = get_db()
+    g.db = database.get_db()
     g.user = None
 
 @app.teardown_request

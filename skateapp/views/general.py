@@ -1,7 +1,6 @@
-from flask import Blueprint, render_template, flash, url_for, request, redirect, abort
+from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, session
 from flask.ext.login import login_required
 from skateapp import app
-from database import *
 
 mod = Blueprint('general', __name__)
 
@@ -9,7 +8,7 @@ mod = Blueprint('general', __name__)
 def index():
     return render_template('general/map.html')
 
-@mod.route('/about')
+@mod.route('/about/')
 def about():
     return render_template('general/about.html')
 
@@ -32,6 +31,6 @@ def logout():
 @mod.route('/secret/')
 def secret():
     if session.get('active'):
-        return render_template('general/secret.html'))
+        return render_template('general/secret.html')
     else:
         abort(403)

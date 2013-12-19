@@ -1,4 +1,4 @@
-{% extends "../layout.html" %}
+{% extends "layout.html" %}
 {% block style %}
         <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
         <link href='{{ url_for('static', filename='skateapp-style-login.css') }}' rel='stylesheet'>
@@ -24,7 +24,7 @@
 {% block page %}
             <div class="container login-cont">
             <div class="tpss-login-content">
-                <form class="form-signin" role="form" action="{{ url_for('login') }}" method=post>
+                <form class="form-signin" role="form" action="{{ url_for('general.login') }}" method=post>
                     <h2 class="form-signin-heading">Please sign in</h2>
                     <input type="text" name="email" class="form-control" placeholder="Email address" required autofocus>
                     <input type="password" name="password" class="form-control" placeholder="Password" required>

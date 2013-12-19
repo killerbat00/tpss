@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, json, make_response
 from skateapp import app
-from database import *
+from skateapp.database import database
 
 mod = Blueprint('api', __name__, url_prefix='/api')
 
@@ -17,7 +17,7 @@ def dict_from_row(row):
 
 @mod.route('/spots/', methods=['GET'])
 def get_spots():
-    cur = query_db('select * from spots')
+    cur = database.query_db('select * from spots')
     d = []
     for a in cur:
         d.append(dict(a))
@@ -25,7 +25,7 @@ def get_spots():
 
 @mod.route('/spots/<id>', methods=['GET'])
 def get_single_spot(id):
-    cur = query_db('select * from spots where id=?',[id],one=True)
+    cur = database.query_db('select * from spots where id=?',[id],one=True)
     if cur:
         return json.jsonify(cur)
     else:
@@ -37,7 +37,7 @@ def update_single_spot(id):
     items = request.form.to_dict()
     avail = [k for k in items.keys() if items[k]]
     #dude, that's ugly. so many queries.
-    cur = query_db('select * from spots where id=?',[eyed],one=True)
+    cur = database.query_db('select * from spots where id=?',[eyed],one=True)
     if not cur:
         abort(404)
     for a in avail:
