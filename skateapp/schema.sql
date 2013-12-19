@@ -6,3 +6,10 @@ create table spots (
     longitude integer not null,
     photo text not null
 );
+drop table if exists users;
+create table users (
+    id integer primary key autoincrement,
+    username text not null,
+    password text not null,
+    admin integer not null
+);

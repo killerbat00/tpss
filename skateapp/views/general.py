@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, session
+from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, session, g
 from flask.ext.login import login_required
-from skateapp import app
+from skateapp import app, utils
+from skateapp.database import database
 
 mod = Blueprint('general', __name__)
 
@@ -15,8 +16,11 @@ def about():
 @mod.route('/login/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        if request.form['email'] == app.config['ADMIN_USER'] and request.form['password'] == app.config['ADMIN_PW']:
-            session['active'] = True
+        uname = request.form['email']
+        pwd = request.form['password']
+        user = database.User(uname, pwd)
+        if user.login() == True:
+            session['user'] = user.__dict__
             return redirect(url_for('general.index'))
         else:
             return redirect(url_for('general.login'))
@@ -24,13 +28,16 @@ def login():
 
 @mod.route('/logout/')
 def logout():
-    if 'active' in session:
-        del session['active']
+    if session['user'] is not None:
+        user = database.User(session['user'].get('username'), session['user'].get('password'))
+        user.logout()
+        session['user'] = None
     return redirect(url_for('general.index'))
 
 @mod.route('/secret/')
 def secret():
-    if session.get('active'):
-        return render_template('general/secret.html')
+    if session['user'] is not None:
+        if session['active'] == True:
+            return render_template('general/secret.html')
     else:
         abort(403)

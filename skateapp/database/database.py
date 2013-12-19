@@ -1,7 +1,29 @@
-from skateapp import app
+from skateapp import app, utils
 from contextlib import closing
 import sqlite3, os
-from flask import g
+from flask import g, session
+
+class User(object):
+    def __init__(self, uname, pw):
+        self.username = uname
+        self.password = utils.encrypt(pw)
+
+    def login(self):
+        cur = query_db('select * from users where username = ? and password = ?', [self.username, self.password], one=True)
+        if cur == None:
+            return False
+        if cur[1] == 'bmorrow':
+            if cur[3] == 1:
+                session['is_admin'] = True
+            session['active'] = True
+            return True
+
+    def logout(self):
+        if session.get('active'):
+            session['active'] = False
+        if session.get('is_admin'):
+            session['is_admin'] = False
+        return
 
 def connect_db():
     rv = sqlite3.connect(app.config['DATABASE_URI'])
