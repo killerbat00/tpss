@@ -7,7 +7,6 @@ class User(object):
     def __init__(self, uname, pw):
         self.username = uname
         self.password = utils.encrypt(pw)
-        self.is_admin = False
 
     def login(self):
         cur = query_db('select * from users where username = ? and password = ?', [self.username, self.password], one=True)

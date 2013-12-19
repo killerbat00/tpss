@@ -15,8 +15,6 @@ elif env == 'test':
 else:
     app.config.from_object(config.Config())
 
-#jinja_env.globals.update('version',app.config['VERSION'])
-
 @app.errorhandler(403)
 def access_denied(e):
     flash(u'You can\'t go there.')
