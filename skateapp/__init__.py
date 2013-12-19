@@ -34,16 +34,14 @@ from skateapp.database import database
 @app.before_request
 def before_request():
     g.db = database.get_db()
-    try:
-        session['user_id']
-        if session['user_id'] is not None:
-            a = g.db.execute('select * from users where id = ?', [session['user_id']]).fetchone()
-            if a is not None:
-                g.user = database.User(a[1], a[2])
-            else:
-                g.user = None
-                session['user_id'] = None
-    except KeyError:
+    if session.has_key('user_id'):
+        a = g.db.execute('select * from users where id = ?', [session['user_id']]).fetchone()
+        if a is not None:
+            g.user = database.User(a[1], a[2])
+        else:
+            g.user = None
+            session['user_id'] = None
+    else:
         g.user = None
         session['user_id'] = None
 
