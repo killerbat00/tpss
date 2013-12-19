@@ -3,7 +3,7 @@ import os
 from datetime import timedelta
 
 project_name = 'skateapp'
-version = '0.2'
+version = '0.2.5'
 adm_user = 'bmorrow'
 adm_pwd = 'f56/SQdUyq6tOI+8nB/E0g=='
 
