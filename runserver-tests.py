@@ -1,7 +1,7 @@
 from skateapp import app
-from skateapp import database
+from skateapp.database import database
 from skateapp import config
-from flask import json
+from flask import json, g
 import unittest
 import os
 import sqlite3
@@ -45,17 +45,12 @@ class SkateAppTestCase(unittest.TestCase):
         assert gh in rv.data
 
     def test_login_page(self):
-        rv = self.app.get('/login')
-        text = 'Login'
+        rv = self.app.get('/login/')
         footer = 'brian morrow'
-        assert footer in rv.data
-        assert text in rv.data
-        assert 'Username' in rv.data
-        assert 'Password' in rv.data
-        assert 'Sign in' in rv.data
+        assert 'Please sign in' in rv.data
 
     def test_about_page(self):
-        rv = self.app.get('/about')
+        rv = self.app.get('/about/')
         text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin diam enim, rutrum id lorem ut, pharetra varius arcu. Nulla pretium commodo turpis ut faucibus. Praesent euismod nunc quis elementum sodales. Maecenas tincidunt, sapien quis aliquet elementum, ipsum diam rutrum risus, ac auctor mi sem ut purus. Vestibulum odio tortor, vestibulum id urna ut, imperdiet facilisis purus. Nulla facilisi. Mauris blandit ultrices purus vel euismod.'
         assert rv.status_code == 200
         assert text in rv.data
