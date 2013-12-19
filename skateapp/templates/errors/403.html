@@ -22,6 +22,11 @@
                     </li>
                 </ul>
 {% endblock %}
+{% block messages %}
+        {% for message in get_flashed_messages() %}
+        <div id="tpss-flash-msg"> {{ message }} </div>
+        {% endfor %}
+{% endblock %}
 {% block page %}
         <div class="container about-cont">
         <div class="tpss-about-content">

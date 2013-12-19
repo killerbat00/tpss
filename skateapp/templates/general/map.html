@@ -14,10 +14,21 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% if g.user %}
+                    <li id="logout">
+                        <a href="/logout">logout</a>
+                    </li>
+                    {% else %}
                     <li id="login">
                         <a href="/login">login</a>
                     </li>
+                    {% endif %}
                 </ul>
+{% endblock %}
+{% block messages %}
+        {% for message in get_flashed_messages() %}
+        <div id="tpss-flash-msg"> {{ message }} </div>
+        {% endfor %}
 {% endblock %}
 {% block map %}
         <div id="map"></div>

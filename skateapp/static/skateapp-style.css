@@ -11,6 +11,11 @@ body {
     margin-left: 0px;
 }
 
+#tpss-flash-msg {
+    color: #fff;
+    background-color: rgb(127, 140, 141);
+}
+
 #wrap {
     min-height: 100%;
     height: auto !important;
