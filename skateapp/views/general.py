@@ -39,3 +39,7 @@ def logout():
 @requires_login
 def dashboard():
     return render_template('general/dashboard.html')
+
+@mod.route('/search/', methods=['GET', 'POST'])
+def search():
+    return render_template('general/search_results.html')

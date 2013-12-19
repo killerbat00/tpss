@@ -1,15 +1,18 @@
 {% extends "layout.html" %}
 {% block style %}
         <link href='{{ url_for('static', filename='skateapp-style.css') }}' rel='stylesheet'>
-        <link href='{{ url_for('static', filename='skateapp-style-map.css') }}' rel='stylesheet'>
-        <script src='{{ url_for('static', filename='OpenLayers.js') }}'></script>
+        <link href='{{ url_for('static', filename='skateapp-style-about.css') }}' rel='stylesheet'>
+{% endblock %}
+{% block wrap %}
+    <div class="jumbotron"></div>
+    <div id="wrap">
 {% endblock %}
 {% block nav %}
                 <ul class="nav navbar-nav">
-                    <li id="home" class="active">
+                    <li id="home">
                         <a href="/">map</a>
                     </li>
-                    <li id="about">
+                    <li id="about" class="active">
                         <a href="/about">about</a>
                     </li>
                     {% if g.user %}
@@ -37,36 +40,23 @@
         {% for message in get_flashed_messages() %}
         <div id="tpss-flash-msg"> {{ message }} </div>
         {% endfor %}
-        <div id="search">
-            <form class="form-search" role="form" action="{{ url_for('general.search') }}" method=post>
-            <input type="text" class="form-control map-search" placeholder="Find a spot...">
-            <button type="submit" class="btn btn-primary btn-lg btn-block map">Search</button>
-        </form>
-        </div>
 {% endblock %}
-{% block map %}
-        <div id="map"></div>
-        <script type="text/javascript">
-            var lonlat = new OpenLayers.LonLat(-10886508.080366, 5380794.490241);
-            var map = new OpenLayers.Map({
-                div: "map",
-                layers: [
-                    new OpenLayers.Layer.OSM("OSM (without buffer)"),
-                    new OpenLayers.Layer.OSM("OSM (with buffer)", null, {buffer: 2})
-                ],
-                controls: [
-                    new OpenLayers.Control.Navigation({
-                        dragPanOptions: {
-                            enableKinetic: true
-                        }
-                    })
-                ],
-                center: lonlat,
-                zoom: 4
-            });
-        </script>
-
+{% block page %}
+        <div class="container about-cont">
+        <div class="tpss-about-content">
+            <h1>search results</h1>
+            <hr>
+            <div style="width:40%;padding-bottom:2%;">
+                <p>here be search results</p>
+            </div>
+        <hr>
+        </div>
+    </div>
+{% endblock %}
+{% block optional %}
+    <div id="push"></div>
+    </div>
 {% endblock %}
 {% block imgcred %}
-        <br>
+        <p id="bg-credit">image via <a href="http://www.flickr.com/photos/oilinki">oilinki</a> on <a href="http://www.flickr.com/">flickr</a>.</p>
 {% endblock %}
