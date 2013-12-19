@@ -75,7 +75,6 @@ body {
 .tpss-nav .navbar-nav > li.active > a {
     color: #fff;
     background-color: #4A346A;
-    border-bottom: 2px solid #fff;
 }
 
 .tpss-nav .navbar-nav > li.active > a:hover {

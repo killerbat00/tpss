@@ -23,14 +23,14 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <p class="navbar-text navbar-right">
-                        Welcome, {{ g.user.username if g.user.username else 'guest'}} 
+                        Welcome, {{ g.user.username if g.user else 'guest'}} 
                     </p>
                     {% if g.user %}
                     <li id="logout">
                         <a href="/logout">logout</a>
                     </li>
                     {% else %}
-                    <li id="login">
+                    <li id="login" class="active">
                         <a href="/login">login</a>
                     </li>
                     {% endif %}
