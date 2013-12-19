@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, json, make_response, g
-from skateapp import app
+from skateapp import app, utils
 from skateapp.database import database
 
 mod = Blueprint('api', __name__, url_prefix='/api')

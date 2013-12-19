@@ -1,9 +1,10 @@
 from Crypto.Cipher import AES
 import base64
-#from skateapp import app
+from functools import wraps
+from skateapp import app
+from flask import flash, g, url_for, redirect, request, abort
 
-#KEY=app.config['SECRET_KEY']
-KEY='skateappskateapp'
+KEY=app.config['SECRET_KEY']
 
 def encrypt(val):
     enc_secret = AES.new(KEY)
@@ -18,3 +19,12 @@ def decrypt(val):
     raw_decrypted = dec_secret.decrypt(base64.b64decode(val))
     clear_val = raw_decrypted.rstrip("\0")
     return clear_val
+
+def requires_login(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            flash(u'You need to be signed in to view this page.')
+            return redirect(url_for('general.login', next=request.path))
+        return f(*args, **kwargs)
+    return decorated_function

@@ -7,22 +7,24 @@ class User(object):
     def __init__(self, uname, pw):
         self.username = uname
         self.password = utils.encrypt(pw)
+        self.is_admin = False
 
     def login(self):
         cur = query_db('select * from users where username = ? and password = ?', [self.username, self.password], one=True)
         if cur == None:
+            session['user_id'] = None
             return False
-        if cur[1] == 'bmorrow':
+        else:
             if cur[3] == 1:
-                session['is_admin'] = True
-            session['active'] = True
+                self.is_admin = True
+            session['user_id'] = cur[0]
             return True
 
     def logout(self):
-        if session.get('active'):
-            session['active'] = False
-        if session.get('is_admin'):
-            session['is_admin'] = False
+        if session.get('user_id'):
+            session['user_id'] = None
+        if g.user:
+            g.user = None
         return
 
 def connect_db():

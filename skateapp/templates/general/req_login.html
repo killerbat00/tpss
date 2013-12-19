@@ -20,19 +20,30 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    {% if g.user %}
+                    <li id="logout">
+                        <a href="/logout">logout</a>
+                    </li>
+                    {% else %}
                     <li id="login">
                         <a href="/login">login</a>
                     </li>
+                    {% endif %}
                 </ul>
+{% endblock %}
+{% block messages %}
+        {% for message in get_flashed_messages() %}
+        <div id="tpss-flash-msg"> {{ message }} </div>
+        {% endfor %}
 {% endblock %}
 {% block page %}
         <div class="container about-cont">
         <div class="tpss-about-content">
-            <h1>secret</h1>
+            <h1>login test</h1>
             <hr>
             <div style="width:40%;padding-bottom:2%;">
             <p>
-            very good. this is a secret.
+            Very good. This page is only visible if you're logged in.
             </p>
             <hr>
         </div>

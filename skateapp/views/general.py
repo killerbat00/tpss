@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, url_for, request, redirect, abort, session, g
-from flask.ext.login import login_required
-from skateapp import app, utils
+from skateapp import app
+from skateapp.utils import requires_login
 from skateapp.database import database
 
 mod = Blueprint('general', __name__)
@@ -20,24 +20,22 @@ def login():
         pwd = request.form['password']
         user = database.User(uname, pwd)
         if user.login() == True:
-            session['user'] = user.__dict__
+            flash(u'You have successfully logged in.')
+            g.user = user
             return redirect(url_for('general.index'))
         else:
+            flash(u'Username or password is incorrenct.')
             return redirect(url_for('general.login'))
     return render_template('general/login.html')
 
 @mod.route('/logout/')
 def logout():
-    if session['user'] is not None:
-        user = database.User(session['user'].get('username'), session['user'].get('password'))
-        user.logout()
-        session['user'] = None
+    if g.user is not None:
+        g.user.logout()
+        flash(u'You have successfully logged out.')
     return redirect(url_for('general.index'))
 
 @mod.route('/secret/')
-def secret():
-    if session['user'] is not None:
-        if session['active'] == True:
-            return render_template('general/secret.html')
-    else:
-        abort(403)
+@requires_login
+def req_login():
+    return render_template('general/req_login.html')

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, g
+from flask import Flask, render_template, session, g, flash
 import os
 import config
 
@@ -17,21 +17,35 @@ else:
 
 @app.errorhandler(403)
 def access_denied(e):
+    flash(u'You can\'t go there.')
     return render_template('errors/403.html'), 403
 
 @app.errorhandler(404)
 def page_not_found(e):
+    flash(u'That page doesn\'t exist.')
     return render_template('errors/404.html'), 404
 
 @app.errorhandler(500)
 def server_error(e):
+    flash(u'The server has exploded. Great.')
     return render_template('errors/500.html'), 500
 
 from skateapp.database import database
 @app.before_request
 def before_request():
     g.db = database.get_db()
-    g.user = None
+    try:
+        i = session['user_id']
+    except KeyError, e:
+        g.user = None
+        session['user_id'] = None
+    finally:
+        a = g.db.execute('select * from users where id = ?', [i]).fetchone()
+        if a is not None:
+            g.user = database.User(a[1], a[2])
+        else:
+            g.user = None
+            session['user_id'] = None
 
 @app.teardown_request
 def teardown_request(exception):
