@@ -50,15 +50,6 @@ html{
     font-weight: normal;
 }
 
-.login {
-    background-color: #95a5a6;
-    border-color: #95a5a6;
-}
-
-.login:hover, .login:focus {
-    background-color: #7f8c8d;
-}
-
 .login-cont {
     margin-top:253px;
     width: 100%;

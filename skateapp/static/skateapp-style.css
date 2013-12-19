@@ -52,6 +52,35 @@ body {
     border-color: #fff;
 }
 
+#search {
+    position: absolute;
+    z-index: 111111111;
+    margin-top: -300px;
+    margin-left: 30%;
+    background: rgba(72,52,106,.8);
+    width: 40%;
+    max-height: 15%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.map-search {
+    display: inline;
+    width: 70%;
+}
+
+.map {
+    display: inline;
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+    width: 16%;
+    min-width: 90px;
+}
+
+.map:hover, .map:focus {
+    background-color: #7f8c8d;
+}
+
 .tpss-nav {
     text-shadow: 0 -1px 0 rgba(0,0,0,.15);
     background-color: #563d7c;
