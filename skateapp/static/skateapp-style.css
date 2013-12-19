@@ -60,6 +60,7 @@ body {
     left: 45%;
     background: rgb(72,52,106);
     width: 40%;
+    min-width: 94px;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 3px;
@@ -70,12 +71,15 @@ body {
 .map-search {
     display: inline;
     width: 70%;
+    min-width: 90px;
 }
 
-.map {
+.search-btn {
     display: inline;
     background-color: #95a5a6;
     border-color: #95a5a6;
+    max-height: 34px;
+    padding-top: 4px;
     width: 16%;
     min-width: 90px;
 }
@@ -85,6 +89,7 @@ body {
 }
 
 .tpss-nav {
+    z-index: 1111111111;
     text-shadow: 0 -1px 0 rgba(0,0,0,.15);
     background-color: #563d7c;
     border-color: #463265;
