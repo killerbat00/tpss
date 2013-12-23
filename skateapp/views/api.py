@@ -44,7 +44,7 @@ def update_single_spot(id):
         try:
             #this doesn't seem secure
             g.db.execute('update spots set %s=? where id=?'%str(a), [items[a], eyed])
-        except sqlite3.Error, e:
+        except sqlite3.Error as e:
             return e
         finally:
             g.db.commit()
@@ -54,7 +54,7 @@ def update_single_spot(id):
 def delete_single_spot(id):
     try:
         g.db.execute('delete from spots where id=?',[id])
-    except sqlite3.Error,e:
+    except sqlite3.Error as e:
         return e
     finally:
         g.db.commit()
@@ -66,7 +66,7 @@ def add_spot():
     its = [items["name"], int(items["latitude"]), int(items["longitude"]), items["photo"]]
     try:
         g.db.execute('''insert into spots (name, latitude, longitude, photo) values (?, ?, ?, ?)''', its)
-    except sqlite3.Error,e:
+    except sqlite3.Error as e:
         return e
     finally:
         g.db.commit()
